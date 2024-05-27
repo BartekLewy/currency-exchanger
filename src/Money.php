@@ -37,4 +37,14 @@ final readonly class Money
         return $this->value === $other->value
             && $this->currency === $other->currency;
     }
+
+    public function multiply(int|float $multiplier): Money
+    {
+        return new Money((int)(ceil($this->value * $multiplier)), $this->currency);
+    }
+
+    public function toCurrency(Currency $currency): Money
+    {
+        return new Money($this->value, $currency);
+    }
 }
