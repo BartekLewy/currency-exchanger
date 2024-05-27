@@ -1,0 +1,49 @@
+{
+  "name": "bartosz/currency-exchanger",
+  "authors": [
+    {
+      "name": "Bartosz Lewandowski",
+      "email": "bartosz.dev@yahoo.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.11",
+    "phpunit/phpunit": "^11.1",
+    "squizlabs/php_codesniffer": "^3.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bartosz\\CurrencyExchanger\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Bartosz\\CurrencyExchanger\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "phpcsfix": [
+      "@php ./vendor/bin/phpcbf --standard=PSR12 ./src ./tests"
+    ],
+    "phpcs": [
+      "@php ./vendor/bin/phpcs --standard=PSR12 ./src ./tests"
+    ],
+    "phpstan": [
+      "@php ./vendor/bin/phpstan analyse -c ./phpstan.neon"
+    ],
+    "tests": [
+      "@php ./vendor/bin/phpunit -c ./phpunit.xml"
+    ],
+    "analyse": [
+      "@phpcs",
+      "@phpstan",
+      "@tests"
+    ]
+  }
+}
