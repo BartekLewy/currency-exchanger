@@ -7,6 +7,7 @@ namespace Bartosz\CurrencyExchanger\Tests;
 use Bartosz\CurrencyExchanger\Currency;
 use Bartosz\CurrencyExchanger\ExchangeMoney;
 use Bartosz\CurrencyExchanger\Money;
+use Bartosz\CurrencyExchanger\Tests\TestDoubles\InMemoryExchangeRateRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -19,9 +20,9 @@ class ExchangeMoneyTest extends TestCase
     #[DataProvider('exchangeResultsDataProvider')]
     public function itExchangesMoneyBasedOnExchangeRate(Money $expected, Money $money, Currency $toCurrency): void
     {
-        $sut = new ExchangeMoney();
+        $exchangeMoney = new ExchangeMoney(new InMemoryExchangeRateRepository());
 
-        $actual = $sut->exchange($money, $toCurrency);
+        $actual = $exchangeMoney->exchange($money, $toCurrency);
 
         self::assertTrue($expected->equals($actual));
     }

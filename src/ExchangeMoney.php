@@ -6,16 +6,14 @@ namespace Bartosz\CurrencyExchanger;
 
 final readonly class ExchangeMoney
 {
+    public function __construct(private ExchangeRateRepositoryInterface $exchangeRateRepository)
+    {
+    }
+
     public function exchange(Money $money, Currency $toCurrency): Money
     {
-        if ($toCurrency === Currency::GBP) {
-            $multiplier = 1.5678;
-        }
+        $exchangeRate = $this->exchangeRateRepository->getCurrentExchangeRate($money->currency, $toCurrency);
 
-        if ($toCurrency === Currency::EUR) {
-            $multiplier = 1.5432;
-        }
-
-        return $money->multiply($multiplier)->toCurrency($toCurrency);
+        return $money->multiply($exchangeRate->value)->toCurrency($toCurrency);
     }
 }

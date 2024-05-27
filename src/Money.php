@@ -6,8 +6,8 @@ namespace Bartosz\CurrencyExchanger;
 
 final readonly class Money
 {
-    private int $value;
-    private Currency $currency;
+    public int $value;
+    public Currency $currency;
 
     public function __construct(
         int $value,
