@@ -5,28 +5,28 @@ declare(strict_types=1);
 namespace Bartosz\CurrencyExchanger\Tests;
 
 use Bartosz\CurrencyExchanger\Currency;
-use Bartosz\CurrencyExchanger\ExchangeCurrency;
+use Bartosz\CurrencyExchanger\ExchangeCalculator;
 use Bartosz\CurrencyExchanger\Money;
-use Bartosz\CurrencyExchanger\SellCurrency;
+use Bartosz\CurrencyExchanger\WithSalesFeeCalculator;
 use Bartosz\CurrencyExchanger\Tests\TestDoubles\InMemoryExchangeRateRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(SellCurrency::class)]
-class SellCurrencyTest extends TestCase
+#[CoversClass(WithSalesFeeCalculator::class)]
+class WithSalesFeeCalculatorTest extends TestCase
 {
     #[Test]
     #[DataProvider('exchangeResultsDataProvider')]
-    public function itExchangesMoneyBasedOnExchangeRateAndChargesAFee(
+    public function itCalculatesBasedOnExchangeRateAndChargesAFee(
         Money $expected,
         Money $money,
         Currency $toCurrency
     ): void {
-        $exchangeMoney = new SellCurrency(new ExchangeCurrency(new InMemoryExchangeRateRepository()));
+        $exchangeMoney = new WithSalesFeeCalculator(new ExchangeCalculator(new InMemoryExchangeRateRepository()));
 
-        $actual = $exchangeMoney->exchange($money, $toCurrency);
+        $actual = $exchangeMoney->calculate($money, $toCurrency);
 
         self::assertTrue($expected->equals($actual));
     }
