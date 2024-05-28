@@ -2,6 +2,7 @@
   "name": "bartosz/currency-exchanger",
   "license": "proprietary",
   "description": "Simple exchange currency system",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Bartosz Lewandowski",
