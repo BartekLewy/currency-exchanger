@@ -41,7 +41,7 @@
       "@php ./vendor/bin/phpstan analyse -c ./phpstan.neon"
     ],
     "tests": [
-      "@php ./vendor/bin/phpunit -c ./phpunit.xml"
+      "@php ./vendor/bin/phpunit -c ./phpunit.xml --testdox"
     ],
     "analyse": [
       "@phpcs",

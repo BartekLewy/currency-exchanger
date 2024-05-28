@@ -21,3 +21,6 @@ phpstan:
 
 phpcs:
 	docker compose run php composer phpcs
+
+qc: phpcs phpstan test
+start: up composer-build
