@@ -18,13 +18,27 @@ final readonly class Money
     }
 
 
-    public function add(Money $second): Money
+    public function add(Money $other): Money
     {
-        if (!$this->isTheSameCurrency($second)) {
+        if (!$this->isTheSameCurrency($other)) {
             throw new \InvalidArgumentException('Currencies must be the same');
         }
 
-        return new Money($this->value + $second->value, $this->currency);
+        return new Money($this->value + $other->value, $this->currency);
+    }
+
+    public function subtract(Money $other): Money
+    {
+        if (!$this->isTheSameCurrency($other)) {
+            throw new \InvalidArgumentException('Currencies must be the same');
+        }
+
+        return new Money($this->value - $other->value, $this->currency);
+    }
+
+    public function multiply(int|float $multiplier): Money
+    {
+        return new Money((int)(round($this->value * $multiplier, mode: PHP_ROUND_HALF_EVEN)), $this->currency);
     }
 
     public function isTheSameCurrency(Money $other): bool
@@ -36,11 +50,6 @@ final readonly class Money
     {
         return $this->value === $other->value
             && $this->currency === $other->currency;
-    }
-
-    public function multiply(int|float $multiplier): Money
-    {
-        return new Money((int)(ceil($this->value * $multiplier)), $this->currency);
     }
 
     public function toCurrency(Currency $currency): Money

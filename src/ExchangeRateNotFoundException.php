@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bartosz\CurrencyExchanger;
 
-class ExchangeRateNotFoundException extends \DomainException
+final class ExchangeRateNotFoundException extends \DomainException
 {
     public static function forCurrency(Currency $currency): self
     {

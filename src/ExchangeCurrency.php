@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bartosz\CurrencyExchanger;
 
-final readonly class ExchangeMoney
+final readonly class ExchangeCurrency implements ExchangeCurrencyInterface
 {
     public function __construct(private ExchangeRateRepositoryInterface $exchangeRateRepository)
     {
