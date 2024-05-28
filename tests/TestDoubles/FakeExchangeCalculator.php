@@ -10,7 +10,6 @@ use Bartosz\CurrencyExchanger\Money;
 
 final readonly class FakeExchangeCalculator implements ExchangeCalculatorInterface
 {
-
     public function calculate(Money $money, Currency $toCurrency): Money
     {
         return new Money($money->value, $toCurrency);

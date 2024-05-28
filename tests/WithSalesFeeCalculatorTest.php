@@ -26,5 +26,4 @@ class WithSalesFeeCalculatorTest extends TestCase
 
         self::assertTrue($expected->equals($actual));
     }
-
 }

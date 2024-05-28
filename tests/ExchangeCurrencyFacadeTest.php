@@ -39,6 +39,9 @@ class ExchangeCurrencyFacadeTest extends TestCase
         self::assertTrue($expected->equals($actual));
     }
 
+    /**
+     * @return iterable<string, array<int, Money|Currency>>
+     */
     public static function purchaseDataProvider(): iterable
     {
         yield 'EUR -> GBP' => [
@@ -72,6 +75,9 @@ class ExchangeCurrencyFacadeTest extends TestCase
         self::assertTrue($expected->equals($actual));
     }
 
+    /**
+     * @return iterable<string, array<int, Money|Currency>>
+     */
     public static function sellDataProvider(): iterable
     {
         yield 'EUR -> GBP' => [
