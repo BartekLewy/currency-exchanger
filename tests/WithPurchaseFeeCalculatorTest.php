@@ -6,6 +6,7 @@ namespace Bartosz\CurrencyExchanger\Tests;
 
 use Bartosz\CurrencyExchanger\Currency;
 use Bartosz\CurrencyExchanger\Money;
+use Bartosz\CurrencyExchanger\Tests\ObjectMothers\MoneyObjectMother;
 use Bartosz\CurrencyExchanger\Tests\TestDoubles\FakeExchangeCalculator;
 use Bartosz\CurrencyExchanger\WithPurchaseFeeCalculator;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -20,10 +21,8 @@ class WithPurchaseFeeCalculatorTest extends TestCase
     {
         $exchangeMoney = new WithPurchaseFeeCalculator(new FakeExchangeCalculator());
 
-        $actual = $exchangeMoney->calculate(new Money(10000, Currency::EUR), Currency::GBP);
+        $actual = $exchangeMoney->calculate(MoneyObjectMother::aHundredEuro(), Currency::GBP);
 
-        $expected = new Money(10100, Currency::GBP);
-
-        self::assertTrue($expected->equals($actual));
+        self::assertTrue(MoneyObjectMother::GBP(10100)->equals($actual));
     }
 }

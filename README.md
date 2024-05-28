@@ -34,6 +34,9 @@ $facade = new ExchangeCurrencyFacade(
     new WithSalesFeeCalculator(),
 );
 
+
+// 100 euro -> new Money(10000, Currency::EUR) 
+// All values are represented as the fractional unit/subunit to avoid rounding issues
 $facade->purchase(new Money(10000, Currency::EUR), Currency::GBP);
 $facade->sell(new Money(10000, Currency::EUR), Currency::GBP);
 

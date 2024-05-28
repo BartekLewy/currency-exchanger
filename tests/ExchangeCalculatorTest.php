@@ -7,6 +7,7 @@ namespace Bartosz\CurrencyExchanger\Tests;
 use Bartosz\CurrencyExchanger\Currency;
 use Bartosz\CurrencyExchanger\ExchangeCalculator;
 use Bartosz\CurrencyExchanger\Money;
+use Bartosz\CurrencyExchanger\Tests\ObjectMothers\MoneyObjectMother;
 use Bartosz\CurrencyExchanger\Tests\TestDoubles\InMemoryExchangeRateRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -33,14 +34,14 @@ class ExchangeCalculatorTest extends TestCase
     public static function exchangeResultsDataProvider(): iterable
     {
         yield 'EUR -> GBP' => [
-            new Money(15678, Currency::GBP),
-            new Money(10000, Currency::EUR),
+            MoneyObjectMother::expectedPoundsAfterExchangeFromEuro(),
+            MoneyObjectMother::aHundredEuro(),
             Currency::GBP,
         ];
 
         yield 'GBP -> EUR' => [
-            new Money(15432, Currency::EUR),
-            new Money(10000, Currency::GBP),
+            MoneyObjectMother::expectedEuroAfterExchangeFromPounds(),
+            MoneyObjectMother::aHundredPounds(),
             Currency::EUR,
         ];
     }

@@ -9,6 +9,7 @@ use Bartosz\CurrencyExchanger\ExchangeCalculator;
 use Bartosz\CurrencyExchanger\ExchangeCurrencyFacade;
 use Bartosz\CurrencyExchanger\ExchangeRateNotFoundException;
 use Bartosz\CurrencyExchanger\Money;
+use Bartosz\CurrencyExchanger\Tests\ObjectMothers\MoneyObjectMother;
 use Bartosz\CurrencyExchanger\Tests\TestDoubles\InMemoryExchangeRateRepository;
 use Bartosz\CurrencyExchanger\WithPurchaseFeeCalculator;
 use Bartosz\CurrencyExchanger\WithSalesFeeCalculator;
@@ -24,9 +25,11 @@ class ExchangeCurrencyFacadeTest extends TestCase
 
     protected function setUp(): void
     {
+        $exchangeCalculator = new ExchangeCalculator(new InMemoryExchangeRateRepository());
+
         $this->facade = new ExchangeCurrencyFacade(
-            new WithPurchaseFeeCalculator(new ExchangeCalculator(new InMemoryExchangeRateRepository())),
-            new WithSalesFeeCalculator(new ExchangeCalculator(new InMemoryExchangeRateRepository())),
+            new WithPurchaseFeeCalculator($exchangeCalculator),
+            new WithSalesFeeCalculator($exchangeCalculator),
         );
     }
 
@@ -45,14 +48,14 @@ class ExchangeCurrencyFacadeTest extends TestCase
     public static function purchaseDataProvider(): iterable
     {
         yield 'EUR -> GBP' => [
-            new Money(15835, Currency::GBP),
-            new Money(10000, Currency::EUR),
+            MoneyObjectMother::GBP(15835),
+            MoneyObjectMother::aHundredEuro(),
             Currency::GBP,
         ];
 
         yield 'GBP -> EUR' => [
-            new Money(15586, Currency::EUR),
-            new Money(10000, Currency::GBP),
+            MoneyObjectMother::EUR(15586),
+            MoneyObjectMother::aHundredPounds(),
             Currency::EUR,
         ];
     }
@@ -63,7 +66,7 @@ class ExchangeCurrencyFacadeTest extends TestCase
         self::expectException(ExchangeRateNotFoundException::class);
         self::expectExceptionMessage('No exchange rate found between EUR and USD');
 
-        $this->facade->purchase(new Money(10000, Currency::EUR), Currency::USD);
+        $this->facade->purchase(MoneyObjectMother::aHundredEuro(), Currency::USD);
     }
 
     #[Test]
@@ -81,14 +84,14 @@ class ExchangeCurrencyFacadeTest extends TestCase
     public static function sellDataProvider(): iterable
     {
         yield 'EUR -> GBP' => [
-            new Money(15521, Currency::GBP),
-            new Money(10000, Currency::EUR),
+            MoneyObjectMother::GBP(15521),
+            MoneyObjectMother::aHundredEuro(),
             Currency::GBP,
         ];
 
         yield 'GBP -> EUR' => [
-            new Money(15278, Currency::EUR),
-            new Money(10000, Currency::GBP),
+            MoneyObjectMother::EUR(15278),
+            MoneyObjectMother::aHundredPounds(),
             Currency::EUR,
         ];
     }
@@ -99,6 +102,6 @@ class ExchangeCurrencyFacadeTest extends TestCase
         self::expectException(ExchangeRateNotFoundException::class);
         self::expectExceptionMessage('No exchange rate found between EUR and USD');
 
-        $this->facade->purchase(new Money(10000, Currency::EUR), Currency::USD);
+        $this->facade->purchase(MoneyObjectMother::aHundredEuro(), Currency::USD);
     }
 }
