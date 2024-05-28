@@ -102,6 +102,6 @@ class ExchangeCurrencyFacadeTest extends TestCase
         self::expectException(ExchangeRateNotFoundException::class);
         self::expectExceptionMessage('No exchange rate found between EUR and USD');
 
-        $this->facade->purchase(MoneyObjectMother::aHundredEuro(), Currency::USD);
+        $this->facade->sell(MoneyObjectMother::aHundredEuro(), Currency::USD);
     }
 }
