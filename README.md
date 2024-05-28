@@ -19,6 +19,27 @@ docker compose up -d
 docker compose run php composer install
 ```
 
+## How to use?
+
+```php
+
+use Bartosz\CurrencyExchanger\Currency;
+use Bartosz\CurrencyExchanger\Money;
+use Bartosz\CurrencyExchanger\ExchangeCurrencyFacade;
+use Bartosz\CurrencyExchanger\WithPurchaseFeeCalculator;
+use Bartosz\CurrencyExchanger\WithSalesFeeCalculator;
+
+$facade = new ExchangeCurrencyFacade(
+    new WithPurchaseFeeCalculator(),
+    new WithSalesFeeCalculator(),
+);
+
+$facade->purchase(new Money(10000, Currency::EUR), Currency::GBP);
+$facade->sell(new Money(10000, Currency::EUR), Currency::GBP);
+
+```
+
+
 ## Run tests and quality checks
 To run all 
 ```
