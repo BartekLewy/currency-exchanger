@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Bartosz\CurrencyExchanger\Tests;
 
 use Bartosz\CurrencyExchanger\Currency;
-use Bartosz\CurrencyExchanger\Money;
 use Bartosz\CurrencyExchanger\Tests\ObjectMothers\MoneyObjectMother;
 use Bartosz\CurrencyExchanger\Tests\TestDoubles\FakeExchangeCalculator;
 use Bartosz\CurrencyExchanger\WithPurchaseFeeCalculator;
