@@ -1,5 +1,7 @@
 # Currency Exchanger
 
+[![Tests](https://github.com/BartekLewy/currency-exchanger/actions/workflows/test.yaml/badge.svg)](https://github.com/BartekLewy/currency-exchanger/actions/workflows/test.yaml)
+
 ## Requirements
 - Docker
 - Makefile (optional)
