@@ -19,12 +19,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Bartosz\\CurrencyExchanger\\": "src/"
+      "Bartosz\\CurrencyExchanger\\": "packages/CurrencyExchanger/src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Bartosz\\CurrencyExchanger\\Tests\\": "tests/"
+      "Bartosz\\CurrencyExchanger\\Tests\\": "packages/CurrencyExchanger/tests/"
     }
   },
   "config": {
@@ -32,10 +32,10 @@
   },
   "scripts": {
     "phpcsfix": [
-      "@php ./vendor/bin/phpcbf --standard=PSR12 ./src ./tests"
+      "@php ./vendor/bin/phpcbf --standard=PSR12 ./packages"
     ],
     "phpcs": [
-      "@php ./vendor/bin/phpcs --standard=PSR12 ./src ./tests"
+      "@php ./vendor/bin/phpcs --standard=PSR12 ./packages"
     ],
     "phpstan": [
       "@php ./vendor/bin/phpstan analyse -c ./phpstan.neon"
