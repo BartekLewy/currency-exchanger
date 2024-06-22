@@ -105,6 +105,6 @@ class MoneyTest extends TestCase
         $first = new Money(10000, Currency::EUR);
         $second = new Money(10000, Currency::GBP);
 
-        $first->add($second);
+        $first->subtract($second);
     }
 }
