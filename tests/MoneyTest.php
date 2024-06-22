@@ -6,12 +6,10 @@ namespace Bartosz\CurrencyExchanger\Tests;
 
 use Bartosz\CurrencyExchanger\Currency;
 use Bartosz\CurrencyExchanger\Money;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(Money::class)]
 class MoneyTest extends TestCase
 {
     #[Test]

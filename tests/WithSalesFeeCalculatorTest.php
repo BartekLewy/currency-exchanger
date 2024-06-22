@@ -8,11 +8,9 @@ use Bartosz\CurrencyExchanger\Currency;
 use Bartosz\CurrencyExchanger\Tests\ObjectMothers\MoneyObjectMother;
 use Bartosz\CurrencyExchanger\Tests\TestDoubles\FakeExchangeCalculator;
 use Bartosz\CurrencyExchanger\WithSalesFeeCalculator;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(WithSalesFeeCalculator::class)]
 class WithSalesFeeCalculatorTest extends TestCase
 {
     #[Test]

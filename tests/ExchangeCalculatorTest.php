@@ -9,12 +9,10 @@ use Bartosz\CurrencyExchanger\ExchangeCalculator;
 use Bartosz\CurrencyExchanger\Money;
 use Bartosz\CurrencyExchanger\Tests\ObjectMothers\MoneyObjectMother;
 use Bartosz\CurrencyExchanger\Tests\TestDoubles\InMemoryExchangeRateRepository;
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(ExchangeCalculator::class)]
 class ExchangeCalculatorTest extends TestCase
 {
     #[Test]
