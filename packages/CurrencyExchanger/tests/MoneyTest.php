@@ -6,6 +6,7 @@ namespace Bartosz\CurrencyExchanger\Tests;
 
 use Bartosz\CurrencyExchanger\Currency;
 use Bartosz\CurrencyExchanger\Money;
+use Bartosz\CurrencyExchanger\Tests\ObjectMothers\MoneyObjectMother;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -104,5 +105,14 @@ class MoneyTest extends TestCase
         $second = new Money(10000, Currency::GBP);
 
         $first->subtract($second);
+    }
+
+    #[Test]
+    public function givenMoneyAreNotEqual(): void
+    {
+        $eur = MoneyObjectMother::EUR(100);
+        $gbp = MoneyObjectMother::GBP(100);
+
+        $this->assertFalse($eur->equals($gbp));
     }
 }

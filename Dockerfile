@@ -7,7 +7,9 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libonig-dev \
     && docker-php-ext-configure zip \
-    && docker-php-ext-install curl mbstring dom zip
+    && docker-php-ext-install curl mbstring dom zip \
+    && pecl install pcov \
+    && docker-php-ext-enable pcov
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /.composer

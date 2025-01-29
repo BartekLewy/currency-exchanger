@@ -1,0 +1,19 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "packages/CurrencyExchanger/src"
+        ]
+    },
+    "logs": {
+        "text": ".infection/infection.log",
+        "html": ".infection/infection.html",
+        "summary": ".infection/summary.log",
+        "json": ".infection/infection-log.json",
+        "perMutator": ".infection/per-mutator.md",
+        "summaryJson": ".infection/summary.json"
+    },
+    "mutators": {
+        "@default": true
+    }
+}

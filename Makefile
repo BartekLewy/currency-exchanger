@@ -22,5 +22,8 @@ phpstan:
 phpcs:
 	docker compose run php composer phpcs
 
-qc: phpcs phpstan test
+infection:
+	docker compose run php composer infection --show-mutations
+
+qc: phpcs phpstan test infection
 start: up composer-build
