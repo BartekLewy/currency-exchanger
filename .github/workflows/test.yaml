@@ -31,3 +31,6 @@ jobs:
 
       - name: Run Tests
         run: composer test
+
+      - name: Run Infection
+        run: composer infection
